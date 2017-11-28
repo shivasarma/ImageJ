@@ -49,10 +49,15 @@ public class Imageview {
 		System.out.println(arr1[0] + " " + arr1[1] + " " + arr1[2] + " " + arr1[3] + " " + arr1[4] );
 		System.out.println(img[643][899]);
 		int[][]img1 = img;
-		for(int jj = 0 ; jj < img1.length ; jj ++ )
-			for(int ii:img1[0])
+		iproc.setIntArray(img1);
+		Image img2 = iproc.createImage();
+		ImagePlus ip3 = new ImagePlus("shiva",img2);
+		ip3.show();
+		//
+		/** for(int jj = 0 ; jj < height ; jj ++ )
+			for(int ii=0 ; )
 				img1[jj][ii] = img1[jj][ii] + 50 ;
-		//ipnew.cre
+		//ipnew.cre **/
 	}
 
 }
