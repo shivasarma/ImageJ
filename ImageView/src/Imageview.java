@@ -1,3 +1,11 @@
+/**
+ * The following algorithm is a basic program that extracts the red component of the RGB image. An input of 32 bit image is given and output
+ * image of 8-bit came out.
+ * 
+ */
+
+
+
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -13,51 +21,47 @@ public class Imageview {
 		IJ ij = new IJ();
 		ImageJ i = new ImageJ();
 		ImageProcessor ip2;
+		
+		//Creating Imageplus image with reference to the location to the image
 		ImagePlus ip = new ImagePlus("C:\\Users\\HP\\Downloads\\Scolopendra_polymorpha_1.jpg");
-		ImagePlus ipnew = IJ.createImage("Scolo-gray", "jpg", 900, 644, 32);
+		
+		//Creating the new imageplus reference
+		ImagePlus ipnew = IJ.createImage("Scolo-gray", "jpg", 900, 644, 32);  //here 32 refers to depth of the image but still 8 bit image is the output
+		
+		//creating processor with reference to the ipnew
 		ImageProcessor iproc = ipnew.getProcessor();
 		ip.show();
 		int[] arr;
 		arr = ip.getPixel(0, 0);
 		int height = ip.getHeight();
 		int Width = ip.getWidth();
+		
+		//Creating matrix to store the values with Width vs Height
 		int[][] img = new int[Width][height];
 		
-		Image I ;
-		I = ip.getImage();
-		Graphics G = I.getGraphics();
-		//System.out.println(arr.length + "\t" + height + "\t " + Width);
+		
+		//copying the pixels to the new matrix
 		for(int m = 0 ; m < Width ; m ++) {
 			for(int n = 0 ; n < height ; n ++) {
-				img[m][n] = ip.getPixel(m, n)[0];
+				img[m][n] = ip.getPixel(m, n)[0];			//img now contains the raw data
 				
 			}
 			
 		}
-		//for(int j = 0; j < arr.length; j ++ )
-			//System.out.print(arr[j] + "\t");
-		/**for(int m = 0 ; m < height; m ++) {
-			for(int n = 0; n < Width ; n++) {
-				System.out.print(img[m][n] + " ");
-			}
-			System.out.println("");
-		}**/
-		//System.out.println(img[10][1]);
 		
-		System.out.println(ip.getBitDepth() + " " + img[0].length + " HIIII " + ip.getHeight());
-		int[] arr1 =  ip.getDimensions();
-		System.out.println(arr1[0] + " " + arr1[1] + " " + arr1[2] + " " + arr1[3] + " " + arr1[4]  );
-		System.out.println(img[643][643]);
+		//Making a copy of the same image(only for reference purpose)
 		int[][]img1 = img;
+		
+		//Don't know what this process does. Assuming it buffers all the pixel values
 		iproc.setIntArray(img1);
+		
+		//Creating Image of AWT standard libraries
 		Image img2 = iproc.createImage();
+		
+		//Creating a reference to the img2 with ip3 for ease in programming with Image J libraries
 		ImagePlus ip3 = new ImagePlus("shiva",img2);
 		ip3.show();
-		//
-		/** for(int jj = 0 ; jj < height ; jj ++ )
-			for(int ii=0 ; )
-				img1[jj][ii] = img1[jj][ii] + 50 ;
-		//ipnew.cre **/
-	}
+		
+		}
 
 }
