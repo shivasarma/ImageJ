@@ -21,14 +21,14 @@ public class Imageview {
 		arr = ip.getPixel(0, 0);
 		int height = ip.getHeight();
 		int Width = ip.getWidth();
-		int[][] img = new int[height][Width];
+		int[][] img = new int[Width][height];
 		
 		Image I ;
 		I = ip.getImage();
 		Graphics G = I.getGraphics();
 		//System.out.println(arr.length + "\t" + height + "\t " + Width);
-		for(int m = 0 ; m < height ; m ++) {
-			for(int n = 0 ; n < Width ; n ++) {
+		for(int m = 0 ; m < Width ; m ++) {
+			for(int n = 0 ; n < height ; n ++) {
 				img[m][n] = ip.getPixel(m, n)[0];
 				
 			}
@@ -44,10 +44,10 @@ public class Imageview {
 		}**/
 		//System.out.println(img[10][1]);
 		
-		System.out.println(ip.getBitDepth() + " " + img[0].length + " HIIII");
+		System.out.println(ip.getBitDepth() + " " + img[0].length + " HIIII " + ip.getHeight());
 		int[] arr1 =  ip.getDimensions();
-		System.out.println(arr1[0] + " " + arr1[1] + " " + arr1[2] + " " + arr1[3] + " " + arr1[4] );
-		System.out.println(img[643][899]);
+		System.out.println(arr1[0] + " " + arr1[1] + " " + arr1[2] + " " + arr1[3] + " " + arr1[4]  );
+		System.out.println(img[643][643]);
 		int[][]img1 = img;
 		iproc.setIntArray(img1);
 		Image img2 = iproc.createImage();
